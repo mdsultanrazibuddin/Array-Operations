@@ -28,11 +28,31 @@
 // });
 // console.log(sum);
 
-const numbers = [2, 4, 5, 6, 7, 8]
-let sum = 0
-numbers.forEach(function ( value, i ) {
-    if (i< 3) {
-        sum+= value
+// const numbers = [2, 4, 5, 6, 7, 8]
+// let sum = 0
+// numbers.forEach(function ( value, i ) {
+//     if (i< 3) {
+//         sum+= value
+//     }
+// });
+// console.log(sum);
+
+
+const arr = [1, 2, 3, null, false, 4, 5, '', 'test', 6, 7];
+
+count = 0;
+for (let i = 0; i < arr.length; i++) {
+    for (let j = i; j < arr.length - 1; j++) {
+        if (!arr[j] || typeof arr[j] !== 'number') {
+            arr[j] = arr[j + 1];
+            arr[j + 1] = undefined;
+        }
     }
-});
-console.log(sum);
+
+    if (arr[i] == undefined) {
+        count++;
+    }
+}
+arr.length -= count;
+
+console.log(arr); // [1, 2, 3, 4, 5, 6, 7];
